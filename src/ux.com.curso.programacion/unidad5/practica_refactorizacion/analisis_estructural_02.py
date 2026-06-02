@@ -1,10 +1,10 @@
 """
 Materia: Programación Estructurada
 Laboratorio: Refactorización y Análisis de Código (Parte II)
-Alumno: [Tu Nombre]
+Alumno: Alexander Solis Chacon
 """
 import random  # Única librería importada por el novato
-
+import statistics
 # =====================================================================
 # RETO 1: Formateador de Nombres de Usuario para Discord
 # Sentido: Asegurar que los nombres en la base de datos no tengan espacios
@@ -42,6 +42,8 @@ def limpiar_nombre_usuario(nombre_sucio):
         return primera_letra + resto_cadena
     return ""
 
+def limpiar_nombre_usuario_refactorizado(nombre_sucio):
+    return nombre_sucio.strip().capitalize()
 # =====================================================================
 # RETO 2: Buscador de Palabras Prohibidas (Filtro contra Groserías)
 # Sentido: Banear o censurar mensajes inapropiados en el chat del servidor.
@@ -63,6 +65,8 @@ def contiene_palabra_bloqueada(mensaje_chat, palabra_prohibida):
             
     return False
 
+def contiene_palabra_bloqueada_refactorizada(mensaje_chat, palabra_prohibida):
+    return palabra_prohibida in mensaje_chat
 # =====================================================================
 # RETO 3: Generador de Contraseñas Temporales para Nuevos Usuarios
 # Sentido: Asignar una clave alfanumérica segura al registrar un agente.
@@ -80,6 +84,9 @@ def generar_clave_temporal():
         
     return clave_generada
 
+def generar_clave_temporal_refactorizada():
+    caracteres_validos = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789"
+    return "".join(random.choices(caracteres_validos, k=8))
 # =====================================================================
 # RETO 4: Buscador del Valor Central (Mediana de Latencia de Red)
 # Sentido: Encontrar el punto medio de ping (ms) para evaluar lag.
@@ -108,17 +115,20 @@ def calcular_mediana_latencia(lista_pings):
         mitad2 = pings_ordenados[n // 2]
         return (mitad1 + mitad2) / 2.0
 
+def calcular_mediana_latencia_refactorizada(lista_pings):
+    return statistics.median(lista_pings)
 
 # === PROGRAMA PRINCIPAL (Punto de entrada para probar) ===
 if __name__ == "__main__":
     print("--- Probando Código Inicial (Parte II) ---")
     
     print("Usuario limpio:", [limpiar_nombre_usuario("   luNA_eDUaRDo  ")])
-    
+    print("Usuario limpio refactorizado:", [limpiar_nombre_usuario_refactorizado("   luNA_eDUaRDo  ")])
     msg = "No digas malas palabras en este servidor"
     print("¿Tiene groserías?:", contiene_palabra_bloqueada(msg, "malas"))
-    
+    print("¿Tiene groserías refactorizada?:", contiene_palabra_bloqueada_refactorizada(msg, "malas"))
     print("Clave generada por el sistema:", generar_clave_temporal())
-    
+    print("Clave generada por el sistema refactorizada:", generar_clave_temporal_refactorizada())
     pings_servidor = [120, 45, 80, 23, 150, 62]
     print("Mediana de latencia encontrada:", calcular_mediana_latencia(pings_servidor))
+    print("Mediana de latencia encontrada refactorizada:", calcular_mediana_latencia_refactorizada(pings_servidor))
