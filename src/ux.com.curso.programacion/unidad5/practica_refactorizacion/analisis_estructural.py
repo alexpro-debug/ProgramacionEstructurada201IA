@@ -43,7 +43,7 @@ def calcular_distancia(x1, y1, x2, y2):
     return distancia
 
 def calcular_distancia_refactorizado(x1, y1, x2, y2):
-    return math.sqtr(math.pow(x2-x1, 2) + math.pow(y2 - y1, 2))
+    return math.sqrt(math.pow(x2 - x1, 2) + math.pow(y2 - y1, 2))
 
 def calcular_distancia_refactorizado_v2(x1, y1, x2, y2):
     return math.hypot(x2 - x1, y2 - y1)
@@ -110,7 +110,7 @@ def evaluar_error_sistema_refactorizado(valor_loss):
 if __name__ == "__main__":
     print("--- Probando Código Inicial ---")
     verificar_fermat(3, 4, 5)
-    verificar_fermat_refactorizado(3, 4, 5)
+    verificar_fermat_refactorizado(3, 4, 5, 4)
     print("Distancia calculada:", calcular_distancia(0, 0, 3, 4))
     print("Distancia calculada refactorizada:", calcular_distancia_refactorizado(0, 0, 3, 4))
     print("Distancia calculada refactorizada v2:", calcular_distancia_refactorizado_v2(0, 0, 3, 4))
