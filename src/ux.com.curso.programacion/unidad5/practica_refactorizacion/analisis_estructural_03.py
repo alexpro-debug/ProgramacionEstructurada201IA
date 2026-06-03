@@ -116,7 +116,6 @@ if __name__ == "__main__":
     print("\nTablero refactorizado de 4x4:")
     for fila in tablero_refactorizado:
         print(fila)
-        
     print("Lectura recortada (125.4 en rango 0-100):", limitar_senal_sensor(125.4, 0.0, 100.0))
     print("Lectura recortada refactorizada:", limitar_senal_sensor_refactorizada(125.4, 0.0, 100.0))
     errores_entrenamiento = [0.45, -0.12, 0.89, -0.03, 0.22]
